@@ -13,6 +13,7 @@ Your development environment should take the following into consideration when u
 7. verify existence of or [install PostgreSQL](http://blog.willj.net/2011/05/31/setting-up-postgresql-for-ruby-on-rails-development-on-os-x/) (Mac OSX)
 
 ## Clone the GitHub repository:
+Once your development environment is set up, you should be ready to work on dcvezzani/golden_monday.
 
     git clone git@github.com:dcvezzani/golden_monday.git
     cd golden_monday
@@ -41,6 +42,7 @@ Replace 'dbprefix' with desired database prefix value.  This manually takes the 
     \q
 
 ### Create config/database.yml
+While Heroku will create its own config/database.yml file during each deployment, you will need to set up your local development environment accordingly.
 
     # -e renders newlines (\n)
     # '!' escapes the history (!) character
@@ -52,6 +54,7 @@ Replace 'dbprefix' with desired database prefix value.  This manually takes the 
     ./bin/rake db:migrate db:migrate:status
 
 ## Set up convenience shell scripts
+Start your server and open the home page in your browser.
 
 Usage: ./open.sh
 
@@ -67,7 +70,6 @@ Usage: ./start.sh
 
 
 ## Develop and test code
-
 Repeat until ready to deploy
 
     git add .
@@ -77,6 +79,7 @@ Repeat until ready to deploy
     git push
 
 ### Deploy code to Heroku
+Once your done writing and testing code, you are ready to deploy.
 
     # do this the first time to connect to the right Heroku repo
     # once this is executed, it should not be necessary to do it again
@@ -87,5 +90,4 @@ Repeat until ready to deploy
     git push heroku master
 
     # synch up with github, if necessary
-
 
