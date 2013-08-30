@@ -11,7 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226192621) do
+ActiveRecord::Schema.define(:version => 20130830061037) do
+
+  create_table "new_and_returning_member_progresses", :force => true do |t|
+    t.string   "ward_branch"
+    t.string   "stake_district"
+    t.text     "address"
+    t.string   "phone_number"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "people", :force => true do |t|
+    t.integer  "new_and_returning_member_progress_id"
+    t.string   "name"
+    t.integer  "age"
+    t.date     "baptism_date"
+    t.date     "confirm_date"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

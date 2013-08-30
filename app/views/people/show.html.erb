@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>New and returning member progress:</b>
+  <%= @person.new_and_returning_member_progress_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @person.name %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @person.age %>
+</p>
+
+<p>
+  <b>Baptism date:</b>
+  <%= @person.baptism_date %>
+</p>
+
+<p>
+  <b>Confirm date:</b>
+  <%= @person.confirm_date %>
+</p>
+
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

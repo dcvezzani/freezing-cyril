@@ -1,0 +1,29 @@
+<h1>Listing new_and_returning_member_progresses</h1>
+
+<table>
+  <tr>
+    <th>Ward branch</th>
+    <th>Stake district</th>
+    <th>Address</th>
+    <th>Phone number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @new_and_returning_member_progresses.each do |new_and_returning_member_progress| %>
+  <tr>
+    <td><%= new_and_returning_member_progress.ward_branch %></td>
+    <td><%= new_and_returning_member_progress.stake_district %></td>
+    <td><%= new_and_returning_member_progress.address %></td>
+    <td><%= new_and_returning_member_progress.phone_number %></td>
+    <td><%= link_to 'Show', new_and_returning_member_progress %></td>
+    <td><%= link_to 'Edit', edit_new_and_returning_member_progress_path(new_and_returning_member_progress) %></td>
+    <td><%= link_to 'Destroy', new_and_returning_member_progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New New and returning member progress', new_new_and_returning_member_progress_path %>

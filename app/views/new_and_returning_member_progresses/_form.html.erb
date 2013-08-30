@@ -1,0 +1,33 @@
+<%= form_for(@new_and_returning_member_progress) do |f| %>
+  <% if @new_and_returning_member_progress.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_and_returning_member_progress.errors.count, "error") %> prohibited this new_and_returning_member_progress from being saved:</h2>
+
+      <ul>
+      <% @new_and_returning_member_progress.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :ward_branch %><br />
+    <%= f.text_field :ward_branch %>
+  </div>
+  <div class="field">
+    <%= f.label :stake_district %><br />
+    <%= f.text_field :stake_district %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br />
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

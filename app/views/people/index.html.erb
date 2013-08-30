@@ -1,0 +1,31 @@
+<h1>Listing people</h1>
+
+<table>
+  <tr>
+    <th>New and returning member progress</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Baptism date</th>
+    <th>Confirm date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @people.each do |person| %>
+  <tr>
+    <td><%= person.new_and_returning_member_progress_id %></td>
+    <td><%= person.name %></td>
+    <td><%= person.age %></td>
+    <td><%= person.baptism_date %></td>
+    <td><%= person.confirm_date %></td>
+    <td><%= link_to 'Show', person %></td>
+    <td><%= link_to 'Edit', edit_person_path(person) %></td>
+    <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Person', new_person_path %>

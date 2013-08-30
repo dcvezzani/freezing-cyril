@@ -1,3 +1,45 @@
+
+# ===== Thu Aug 29 22:55:09 PDT 2013
+
+./bin/rails g scaffold NewAndReturningMemberProgress ward_branch:string stake_district:string address:text phone_number:string
+
+parents
+children
+ward_council_representatives
+home_teachers
+visiting_teachers
+checklist_items
+
+./bin/rails g scaffold Person new_and_returning_member_progress_id:integer name:string age:integer baptism_date:date confirm_date:date
+
+./bin/rails g scaffold Family::Parent
+new_and_returning_member_progress_id:integer
+name:string
+baptism_date:date
+confirm_date:date
+
+./bin/rails g scaffold Family::Child 
+new_and_returning_member_progress_id:integer
+name:string age:integer
+
+./bin/rails g scaffold Leadership::WardCouncilRepresentative
+new_and_returning_member_progress_id:integer
+name:string
+
+./bin/rails g scaffold Leadership::HomeTeacher
+new_and_returning_member_progress_id:integer
+name:string
+
+./bin/rails g scaffold Leadership::VisitingTeacher
+new_and_returning_member_progress_id:integer
+name:string
+
+./bin/rails g scaffold NewAndReturningMemberProgress::CheckListItem
+name:string
+label
+date_completed
+
+
 BUNDLE_GEMFILE=/Users/davidvezzani/rails-app/clean-start/Gemfile bundle exec rails new clf-004 -T
 git clone -b master clean-start clf-004
 

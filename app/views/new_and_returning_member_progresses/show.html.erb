@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Ward branch:</b>
+  <%= @new_and_returning_member_progress.ward_branch %>
+</p>
+
+<p>
+  <b>Stake district:</b>
+  <%= @new_and_returning_member_progress.stake_district %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @new_and_returning_member_progress.address %>
+</p>
+
+<p>
+  <b>Phone number:</b>
+  <%= @new_and_returning_member_progress.phone_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_new_and_returning_member_progress_path(@new_and_returning_member_progress) %> |
+<%= link_to 'Back', new_and_returning_member_progresses_path %>
