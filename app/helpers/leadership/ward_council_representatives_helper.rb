@@ -1,0 +1,2 @@
+module Leadership::WardCouncilRepresentativesHelper
+end

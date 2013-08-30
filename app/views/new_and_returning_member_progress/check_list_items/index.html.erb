@@ -1,0 +1,27 @@
+<h1>Listing new_and_returning_member_progress_check_list_items</h1>
+
+<table>
+  <tr>
+    <th>New and returning member progress</th>
+    <th>Check list item label</th>
+    <th>Date completed</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @new_and_returning_member_progress_check_list_items.each do |new_and_returning_member_progress_check_list_item| %>
+  <tr>
+    <td><%= new_and_returning_member_progress_check_list_item.new_and_returning_member_progress_id %></td>
+    <td><%= new_and_returning_member_progress_check_list_item.check_list_item_label_id %></td>
+    <td><%= new_and_returning_member_progress_check_list_item.date_completed %></td>
+    <td><%= link_to 'Show', new_and_returning_member_progress_check_list_item %></td>
+    <td><%= link_to 'Edit', edit_new_and_returning_member_progress_check_list_item_path(new_and_returning_member_progress_check_list_item) %></td>
+    <td><%= link_to 'Destroy', new_and_returning_member_progress_check_list_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Check list item', new_new_and_returning_member_progress_check_list_item_path %>

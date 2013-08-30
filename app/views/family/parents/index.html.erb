@@ -1,0 +1,29 @@
+<h1>Listing family_parents</h1>
+
+<table>
+  <tr>
+    <th>New and returning member progress</th>
+    <th>Name</th>
+    <th>Baptism date</th>
+    <th>Confirm date</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @family_parents.each do |family_parent| %>
+  <tr>
+    <td><%= family_parent.new_and_returning_member_progress_id %></td>
+    <td><%= family_parent.name %></td>
+    <td><%= family_parent.baptism_date %></td>
+    <td><%= family_parent.confirm_date %></td>
+    <td><%= link_to 'Show', family_parent %></td>
+    <td><%= link_to 'Edit', edit_family_parent_path(family_parent) %></td>
+    <td><%= link_to 'Destroy', family_parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Parent', new_family_parent_path %>

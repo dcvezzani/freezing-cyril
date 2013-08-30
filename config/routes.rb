@@ -1,4 +1,18 @@
 Clf004::Application.routes.draw do
+  namespace :new_and_returning_member_progress do resources :check_list_items end
+
+  namespace :new_and_returning_member_progress do resources :check_list_item_labels end
+
+  namespace :leadership do resources :visiting_teachers end
+
+  namespace :leadership do resources :home_teachers end
+
+  namespace :leadership do resources :ward_council_representatives end
+
+  namespace :family do resources :children end
+
+  namespace :family do resources :parents end
+
   resources :people
 
   resources :new_and_returning_member_progresses

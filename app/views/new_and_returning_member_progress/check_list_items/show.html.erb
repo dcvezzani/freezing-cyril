@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>New and returning member progress:</b>
+  <%= @new_and_returning_member_progress_check_list_item.new_and_returning_member_progress_id %>
+</p>
+
+<p>
+  <b>Check list item label:</b>
+  <%= @new_and_returning_member_progress_check_list_item.check_list_item_label_id %>
+</p>
+
+<p>
+  <b>Date completed:</b>
+  <%= @new_and_returning_member_progress_check_list_item.date_completed %>
+</p>
+
+
+<%= link_to 'Edit', edit_new_and_returning_member_progress_check_list_item_path(@new_and_returning_member_progress_check_list_item) %> |
+<%= link_to 'Back', new_and_returning_member_progress_check_list_items_path %>

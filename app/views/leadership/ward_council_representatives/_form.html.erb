@@ -1,0 +1,25 @@
+<%= form_for(@leadership_ward_council_representative) do |f| %>
+  <% if @leadership_ward_council_representative.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@leadership_ward_council_representative.errors.count, "error") %> prohibited this leadership_ward_council_representative from being saved:</h2>
+
+      <ul>
+      <% @leadership_ward_council_representative.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :new_and_returning_member_progress_id %><br />
+    <%= f.number_field :new_and_returning_member_progress_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>New and returning member progress:</b>
+  <%= @family_child.new_and_returning_member_progress_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @family_child.name %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @family_child.age %>
+</p>
+
+
+<%= link_to 'Edit', edit_family_child_path(@family_child) %> |
+<%= link_to 'Back', family_children_path %>

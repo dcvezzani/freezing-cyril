@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>New and returning member progress:</b>
+  <%= @leadership_visiting_teacher.new_and_returning_member_progress_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @leadership_visiting_teacher.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_leadership_visiting_teacher_path(@leadership_visiting_teacher) %> |
+<%= link_to 'Back', leadership_visiting_teachers_path %>

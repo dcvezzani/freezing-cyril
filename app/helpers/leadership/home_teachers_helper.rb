@@ -1,0 +1,2 @@
+module Leadership::HomeTeachersHelper
+end

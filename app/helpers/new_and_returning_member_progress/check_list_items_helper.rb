@@ -1,0 +1,2 @@
+module NewAndReturningMemberProgress::CheckListItemsHelper
+end

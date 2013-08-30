@@ -1,0 +1,29 @@
+<%= form_for(@family_child) do |f| %>
+  <% if @family_child.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@family_child.errors.count, "error") %> prohibited this family_child from being saved:</h2>
+
+      <ul>
+      <% @family_child.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :new_and_returning_member_progress_id %><br />
+    <%= f.number_field :new_and_returning_member_progress_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

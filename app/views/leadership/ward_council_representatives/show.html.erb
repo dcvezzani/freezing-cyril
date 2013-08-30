@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>New and returning member progress:</b>
+  <%= @leadership_ward_council_representative.new_and_returning_member_progress_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @leadership_ward_council_representative.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_leadership_ward_council_representative_path(@leadership_ward_council_representative) %> |
+<%= link_to 'Back', leadership_ward_council_representatives_path %>

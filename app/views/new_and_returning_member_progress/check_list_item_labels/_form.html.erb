@@ -1,0 +1,25 @@
+<%= form_for(@new_and_returning_member_progress_check_list_item_label) do |f| %>
+  <% if @new_and_returning_member_progress_check_list_item_label.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@new_and_returning_member_progress_check_list_item_label.errors.count, "error") %> prohibited this new_and_returning_member_progress_check_list_item_label from being saved:</h2>
+
+      <ul>
+      <% @new_and_returning_member_progress_check_list_item_label.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_area :value %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
