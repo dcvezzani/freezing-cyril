@@ -1,3 +1,7 @@
+# ===== Fri Aug 30 05:29:04 PDT 2013
+
+mvim -p spec/factories/family_children.rb spec/factories/family_parents.rb spec/factories/leadership_home_teachers.rb spec/factories/leadership_visiting_teachers.rb spec/factories/leadership_ward_council_representatives.rb spec/factories/new_and_returning_member_progress_check_list_item_labels.rb spec/factories/new_and_returning_member_progress_check_list_items.rb spec/factories/new_and_returning_member_progresses.rb
+
 
 # ===== Thu Aug 29 22:55:09 PDT 2013
 
@@ -11,6 +15,7 @@ visiting_teachers
 checklist_items
 
 ./bin/rails g scaffold Person new_and_returning_member_progress_id:integer name:string age:integer baptism_date:date confirm_date:date
+./bin/rails g model Person new_and_returning_member_progress_id:integer name:string age:integer baptism_date:date confirm_date:date type:string
 
 ./bin/rails g scaffold Family::Parent new_and_returning_member_progress_id:integer name:string baptism_date:date confirm_date:date
 
@@ -23,11 +28,10 @@ checklist_items
 ./bin/rails g scaffold Leadership::VisitingTeacher new_and_returning_member_progress_id:integer name:string
 
 ./bin/rails g scaffold NewAndReturningMemberProgress::CheckListItemLabel name:string value:text
-./bin/rails g model NewAndReturningMemberProgress::CheckListItemLabel name:string value:text
+./bin/rails g model NewAndReturningMemberProgress::CheckListItemLabel name:string value:text type:string
 
 ./bin/rails g scaffold NewAndReturningMemberProgress::CheckListItem new_and_returning_member_progress_id:integer check_list_item_label_id:integer date_completed:date
-
-./bin/rails g model NewAndReturningMemberProgress::CheckListItem new_and_returning_member_progress_id:integer check_list_item_label_id:integer date_completed:date
+./bin/rails g model NewAndReturningMemberProgress::CheckListItem new_and_returning_member_progress_id:integer check_list_item_label_id:integer date_completed:date type:string
 
 
 rm db/migrate/20130830061340_create_family_children.rb db/migrate/20130830061418_create_leadership_ward_council_representatives.rb db/migrate/20130830061426_create_leadership_home_teachers.rb db/migrate/20130830061507_create_leadership_visiting_teachers.rb db/migrate/20130830061652_create_new_and_returning_member_progress_check_list_item_labels.rb db/migrate/20130830061729_create_new_and_returning_member_progress_check_list_items.rb
