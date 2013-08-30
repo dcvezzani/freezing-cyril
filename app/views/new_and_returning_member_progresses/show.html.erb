@@ -54,21 +54,34 @@
 </ul>
 
 
-<div class="row">
-  <div id="parents" class="span6">
+<div id="details" class="row">
+  <div id="parents" class="association span6">
     <div class="well"><%= link_to "Parents", [@new_and_returning_member_progress, :family, :parents] %></div>
   </div>
-  <div id="children" class="span6">
+  <div id="children" class="association span6">
     <div class="well"><%= link_to "Children", [@new_and_returning_member_progress, :family, :children] %></div>
   </div>
 
-  <div id="ward_council_representatives" class="span6">
+  <div id="ward_council_representatives" class="association span6">
     <div class="well"><%= link_to "Ward Council Representatives", [@new_and_returning_member_progress, :leadership, :ward_council_representatives] %></div>
   </div>
-  <div id="home_teachers" class="span6">
+  <div id="home_teachers" class="association span6">
     <div class="well"><%= link_to "Home Teachers", [@new_and_returning_member_progress, :leadership, :home_teachers] %></div>
   </div>
-  <div id="visiting_teachers" class="span6">
+  <div id="visiting_teachers" class="association span6">
     <div class="well"><%= link_to "Visiting Teachers", [@new_and_returning_member_progress, :leadership, :visiting_teachers] %></div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#details .association a").click(function(){
+      href = $(this).attr("href");
+      anchor = $(this);
+      $.get(href, function(data){
+        $(anchor).closest("div").html(data);
+      });
+      return false;
+    });
+  });
+</script>
