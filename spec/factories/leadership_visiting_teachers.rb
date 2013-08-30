@@ -3,6 +3,6 @@
 FactoryGirl.define do
   factory :leadership_visiting_teacher, :class => 'Leadership::VisitingTeacher' do
     new_and_returning_member_progress_id 1
-    name "MyString"
+    name { Forgery(:name).first_name }
   end
 end

@@ -82,7 +82,8 @@ end
 
 # for temporary testing
 group :production do
-  gem "faker"
+  #gem "faker"
+  gem "forgery"
   gem "factory_girl_rails", ">= 3.3.0"
 end
 
@@ -91,7 +92,8 @@ group :development, :test do
 
   #gem "rspec-rails", ">= 2.10.1"
   gem "rspec-rails", ">= 2.12.0"
-  gem "faker"
+  #gem "faker"
+  gem "forgery"
   gem "factory_girl_rails", ">= 3.3.0"
   gem "shoulda"
   #gem "factory_girl_rails", ">= 3.3.0", :require => false
