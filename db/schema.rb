@@ -11,7 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130830061037) do
+ActiveRecord::Schema.define(:version => 20130830065931) do
+
+  create_table "new_and_returning_member_progress_check_list_item_labels", :force => true do |t|
+    t.string   "name"
+    t.text     "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "new_and_returning_member_progress_check_list_items", :force => true do |t|
+    t.integer  "new_and_returning_member_progress_id"
+    t.integer  "check_list_item_label_id"
+    t.date     "date_completed"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+  end
 
   create_table "new_and_returning_member_progresses", :force => true do |t|
     t.string   "ward_branch"
