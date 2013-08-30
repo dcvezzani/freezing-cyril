@@ -12,32 +12,29 @@ checklist_items
 
 ./bin/rails g scaffold Person new_and_returning_member_progress_id:integer name:string age:integer baptism_date:date confirm_date:date
 
-./bin/rails g scaffold Family::Parent
-new_and_returning_member_progress_id:integer
-name:string
-baptism_date:date
-confirm_date:date
+./bin/rails g scaffold Family::Parent new_and_returning_member_progress_id:integer name:string baptism_date:date confirm_date:date
 
-./bin/rails g scaffold Family::Child 
-new_and_returning_member_progress_id:integer
-name:string age:integer
+./bin/rails g scaffold Family::Child new_and_returning_member_progress_id:integer name:string age:integer
 
-./bin/rails g scaffold Leadership::WardCouncilRepresentative
-new_and_returning_member_progress_id:integer
-name:string
+./bin/rails g scaffold Leadership::WardCouncilRepresentative new_and_returning_member_progress_id:integer name:string
 
-./bin/rails g scaffold Leadership::HomeTeacher
-new_and_returning_member_progress_id:integer
-name:string
+./bin/rails g scaffold Leadership::HomeTeacher new_and_returning_member_progress_id:integer name:string
 
-./bin/rails g scaffold Leadership::VisitingTeacher
-new_and_returning_member_progress_id:integer
-name:string
+./bin/rails g scaffold Leadership::VisitingTeacher new_and_returning_member_progress_id:integer name:string
 
-./bin/rails g scaffold NewAndReturningMemberProgress::CheckListItem
-name:string
-label
-date_completed
+./bin/rails g scaffold NewAndReturningMemberProgress::CheckListItemLabel name:string value:text
+./bin/rails g model NewAndReturningMemberProgress::CheckListItemLabel name:string value:text
+
+./bin/rails g scaffold NewAndReturningMemberProgress::CheckListItem new_and_returning_member_progress_id:integer check_list_item_label_id:integer date_completed:date
+
+./bin/rails g model NewAndReturningMemberProgress::CheckListItem new_and_returning_member_progress_id:integer check_list_item_label_id:integer date_completed:date
+
+
+rm db/migrate/20130830061340_create_family_children.rb db/migrate/20130830061418_create_leadership_ward_council_representatives.rb db/migrate/20130830061426_create_leadership_home_teachers.rb db/migrate/20130830061507_create_leadership_visiting_teachers.rb db/migrate/20130830061652_create_new_and_returning_member_progress_check_list_item_labels.rb db/migrate/20130830061729_create_new_and_returning_member_progress_check_list_items.rb
+
+mvim -p app/models/family/parent.rb app/models/family/child.rb app/models/leadership/ward_council_representative.rb app/models/leadership/home_teacher.rb app/models/leadership/visiting_teacher.rb
+
+mvim -p spec/factories/family_children.rb spec/factories/family_parents.rb spec/factories/leadership_home_teachers.rb spec/factories/leadership_visiting_teachers.rb spec/factories/leadership_ward_council_representatives.rb spec/factories/new_and_returning_member_progress_check_list_item_labels.rb spec/factories/new_and_returning_member_progress_check_list_items.rb spec/factories/new_and_returning_member_progresses.rb
 
 
 BUNDLE_GEMFILE=/Users/davidvezzani/rails-app/clean-start/Gemfile bundle exec rails new clf-004 -T
