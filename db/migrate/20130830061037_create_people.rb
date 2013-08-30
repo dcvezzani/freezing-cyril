@@ -6,6 +6,7 @@ class CreatePeople < ActiveRecord::Migration
       t.integer :age
       t.date :baptism_date
       t.date :confirm_date
+      t.string :type
 
       t.timestamps
     end
