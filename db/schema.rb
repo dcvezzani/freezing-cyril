@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20130830065931) do
     t.integer  "age"
     t.date     "baptism_date"
     t.date     "confirm_date"
+    t.string   "type"
     t.datetime "created_at",                           :null => false
     t.datetime "updated_at",                           :null => false
   end

@@ -7,3 +7,8 @@ FactoryGirl.define do
     age { Forgery(:basic).number({at_most: 21}) }
   end
 end
+
+=begin
+FactoryGirl.build(:family_child)
+FactoryGirl.build(:family_child, name: "George")
+=end
