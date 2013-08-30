@@ -23,7 +23,21 @@ FactoryGirl.define do
 
       after(:build) do |report, evaluator|
         report.children << FactoryGirl.build_list(:family_child, rand(0...6))
-        report.parents << FactoryGirl.build_list(:family_parent, [1,1,2,2,2,2].sample)
+        #report.parents << FactoryGirl.build_list(:family_parent, [1,1,2,2,2,2].sample)
+        parents_status = %w{d m m b b b b b}.sample
+        fathers_name = lambda{Forgery(:name).male_first_name}.call
+        mothers_name = lambda{Forgery(:name).female_first_name}.call
+
+        case(parents_status)
+        when 'd'
+          report.parents << FactoryGirl.build(:family_parent, name: fathers_name)
+        when 'm'
+          report.parents << FactoryGirl.build(:family_parent, name: mothers_name)
+        else
+          report.parents << FactoryGirl.build(:family_parent, name: fathers_name)
+          report.parents << FactoryGirl.build(:family_parent, name: mothers_name)
+        end
+        
         report.ward_council_representatives << FactoryGirl.build_list(:leadership_ward_council_representative, [1,1,2,2,2,2].sample)
         report.home_teachers << FactoryGirl.build_list(:leadership_home_teacher, 2)
         report.visiting_teachers << FactoryGirl.build_list(:leadership_visiting_teacher, 2)

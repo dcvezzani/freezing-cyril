@@ -2,7 +2,7 @@ class Leadership::VisitingTeachersController < ApplicationController
   # GET /leadership/visiting_teachers
   # GET /leadership/visiting_teachers.json
   def index
-    @leadership_visiting_teachers = Leadership::VisitingTeacher.all
+    @leadership_visiting_teachers = Leadership::VisitingTeacher.where{new_and_returning_member_progress_id == my{params[:new_and_returning_member_progress_id]}}
 
     respond_to do |format|
       format.html # index.html.erb

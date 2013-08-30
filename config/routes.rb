@@ -15,7 +15,14 @@ Clf004::Application.routes.draw do
 
   resources :people
 
-  resources :new_and_returning_member_progresses
+  resources :new_and_returning_member_progresses do
+    namespace :family do resources :children end
+    namespace :family do resources :parents end
+
+    namespace :leadership do resources :visiting_teachers end
+    namespace :leadership do resources :home_teachers end
+    namespace :leadership do resources :ward_council_representatives end
+  end
 
   get "welcome/index"
   get "welcome/wizard", as: :wizard_welcome

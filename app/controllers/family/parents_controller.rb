@@ -2,7 +2,7 @@ class Family::ParentsController < ApplicationController
   # GET /family/parents
   # GET /family/parents.json
   def index
-    @family_parents = Family::Parent.all
+    @family_parents = Family::Parent.where{new_and_returning_member_progress_id == my{params[:new_and_returning_member_progress_id]}}
 
     respond_to do |format|
       format.html # index.html.erb

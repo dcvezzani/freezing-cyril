@@ -2,7 +2,7 @@ class Leadership::HomeTeachersController < ApplicationController
   # GET /leadership/home_teachers
   # GET /leadership/home_teachers.json
   def index
-    @leadership_home_teachers = Leadership::HomeTeacher.all
+    @leadership_home_teachers = Leadership::HomeTeacher.where{new_and_returning_member_progress_id == my{params[:new_and_returning_member_progress_id]}}
 
     respond_to do |format|
       format.html # index.html.erb

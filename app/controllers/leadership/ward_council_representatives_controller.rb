@@ -2,7 +2,7 @@ class Leadership::WardCouncilRepresentativesController < ApplicationController
   # GET /leadership/ward_council_representatives
   # GET /leadership/ward_council_representatives.json
   def index
-    @leadership_ward_council_representatives = Leadership::WardCouncilRepresentative.all
+    @leadership_ward_council_representatives = Leadership::WardCouncilRepresentative.where{new_and_returning_member_progress_id == my{params[:new_and_returning_member_progress_id]}}
 
     respond_to do |format|
       format.html # index.html.erb
