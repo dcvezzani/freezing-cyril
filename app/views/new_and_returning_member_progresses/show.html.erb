@@ -43,6 +43,10 @@
     display: inline-block;
     margin: 2em 0 2em;
   }
+
+  .association h1{
+    font-size: 14pt;
+  }
 </style>
 
 <ul id="xdetails">
@@ -56,20 +60,20 @@
 
 <div id="details" class="row">
   <div id="parents" class="association span6">
-    <div class="well"><%= link_to "Parents", [@new_and_returning_member_progress, :family, :parents] %></div>
+    <div class="well"><%= link_to "Parents", polymorphic_url([@new_and_returning_member_progress, :family, :parents], layout: "none") %></div>
   </div>
   <div id="children" class="association span6">
-    <div class="well"><%= link_to "Children", [@new_and_returning_member_progress, :family, :children] %></div>
+    <div class="well"><%= link_to "Children", polymorphic_url([@new_and_returning_member_progress, :family, :children], layout: "none") %></div>
   </div>
 
   <div id="ward_council_representatives" class="association span6">
-    <div class="well"><%= link_to "Ward Council Representatives", [@new_and_returning_member_progress, :leadership, :ward_council_representatives] %></div>
+    <div class="well"><%= link_to "Ward Council Representatives", polymorphic_url([@new_and_returning_member_progress, :leadership, :ward_council_representatives], layout: "none") %></div>
   </div>
   <div id="home_teachers" class="association span6">
-    <div class="well"><%= link_to "Home Teachers", [@new_and_returning_member_progress, :leadership, :home_teachers] %></div>
+    <div class="well"><%= link_to "Home Teachers", polymorphic_url([@new_and_returning_member_progress, :leadership, :home_teachers], layout: "none") %></div>
   </div>
   <div id="visiting_teachers" class="association span6">
-    <div class="well"><%= link_to "Visiting Teachers", [@new_and_returning_member_progress, :leadership, :visiting_teachers] %></div>
+    <div class="well"><%= link_to "Visiting Teachers", polymorphic_url([@new_and_returning_member_progress, :leadership, :visiting_teachers], layout: "none") %></div>
   </div>
 </div>
 

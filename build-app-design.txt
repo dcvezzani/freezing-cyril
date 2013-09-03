@@ -2,6 +2,8 @@
 
 mvim -p spec/factories/family_children.rb spec/factories/family_parents.rb spec/factories/leadership_home_teachers.rb spec/factories/leadership_visiting_teachers.rb spec/factories/leadership_ward_council_representatives.rb spec/factories/new_and_returning_member_progress_check_list_item_labels.rb spec/factories/new_and_returning_member_progress_check_list_items.rb spec/factories/new_and_returning_member_progresses.rb
 
+mvim -p app/controllers/family/parents_controller.rb app/controllers/family/children_controller.rb app/controllers/leadership/home_teachers_controller.rb app/controllers/leadership/visiting_teachers_controller.rb app/controllers/leadership/ward_council_representatives_controller.rb
+
 
 # ===== Thu Aug 29 22:55:09 PDT 2013
 
