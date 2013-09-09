@@ -1,7 +1,7 @@
 class AjaxableController < ApplicationController
   before_filter :check_layout
-  before_filter :load_model, only: [:destroy, :edit, :show, :create]
-  before_filter :load_models, except: [:show, :new, :edit]
+  before_filter :load_model
+  before_filter :load_models, except: [:show, :new, :edit, :create]
 
   # GET /family/parents
   # GET /family/parents.json
@@ -15,8 +15,6 @@ class AjaxableController < ApplicationController
   # GET /family/parents/1
   # GET /family/parents/1.json
   def show
-    @model = Family::Parent.find(params[:id])
-
     respond_to do |format|
       format.html { render layout: @use_layout }
       format.json { render json: @model }
@@ -26,8 +24,6 @@ class AjaxableController < ApplicationController
   # GET /family/parents/new
   # GET /family/parents/new.json
   def new
-    @model = Family::Parent.new
-
     respond_to do |format|
       format.html { render layout: @use_layout }
       format.json { render json: @model }
@@ -51,7 +47,8 @@ class AjaxableController < ApplicationController
           if(@use_layout)
             redirect_to @model, notice: "#{@model.class.name} was successfully created."
           else
-            render layout: @use_layout
+            load_models
+            render action: :index, layout: @use_layout
           end
         }
         format.json { render json: @model, status: :created, location: @model }
@@ -85,14 +82,15 @@ class AjaxableController < ApplicationController
   # DELETE /family/parents/1
   # DELETE /family/parents/1.json
   def destroy
-    @model.destroy
+    #@model.destroy
 
     respond_to do |format|
       format.html { 
         if(@use_layout)
           redirect_to collection_url
         else
-          render layout: @use_layout
+          load_models
+          render action: :index, layout: @use_layout
         end
       }
       format.json { head :no_content }
@@ -103,6 +101,8 @@ class AjaxableController < ApplicationController
     # guess the model class associated with the controller
     klass = guess_model_class
     foreign_key_id = "#{klass.reflect_on_all_associations.first.name.to_s}_id"
+
+    puts ">>> found foreign_key_id: #{foreign_key_id}"
 
     # limit by foreign key
     if(params[foreign_key_id])
@@ -122,16 +122,22 @@ class AjaxableController < ApplicationController
     klass = guess_model_class
     if(params[model_id_parameter])
       @model = klass.new(params[model_id_parameter])
-    else
+    elsif(params[:id])
       @model = klass.find(params[:id])
+    else
+      @model = klass.new
     end
 
     inst_var_name = params[:controller].gsub(/\//, "_").singularize
+
+    puts ">>> load_model: @#{inst_var_name}"
     instance_variable_set("@#{inst_var_name}", @model)
   end
 
-  def collection_url
-    self.send "#{params[:controller].gsub(/\//, "_")}_url"
+  def collection_url(model = @model)
+    #TODO: need to add '/family/parents' to the url to
+    #isolate retrieving just the parents for record
+    self.send("#{model.class.name.underscore}_url", model.id)
   end
 
   def model_id_parameter

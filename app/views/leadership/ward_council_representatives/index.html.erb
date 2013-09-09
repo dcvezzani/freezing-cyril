@@ -15,11 +15,74 @@
     <td><%= leadership_ward_council_representative.name %></td>
     <td><%= link_to 'Show', leadership_ward_council_representative %></td>
     <td><%= link_to 'Edit', edit_leadership_ward_council_representative_path(leadership_ward_council_representative) %></td>
-    <td><%= link_to 'Destroy', leadership_ward_council_representative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td style="display: none; "><%= link_to 'Destroy', leadership_ward_council_representative, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', polymorphic_url([leadership_ward_council_representative], layout: "none"), method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Ward council representative', new_leadership_ward_council_representative_path %>
+<div class="new-model"><%= link_to 'New Ward council representative', new_leadership_ward_council_representative_path(layout: "none") %></div>
+
+    <div id="myModal" class="modal hide fade">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Add a new <%= @leadership_ward_council_representatives.first.class.name %></h3>
+    </div>
+    <div class="modal-body">
+    <p></p>
+    </div>
+    <div class="modal-footer">
+    <a href="#" class="btn">Close</a>
+    <a href="#" class="btn btn-primary">Add record</a>
+    </div>
+    </div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("a:contains('Destroy')").click(function(){
+      authenticity_token_value = $("meta[name='csrf-token']").attr("content");
+      authenticity_token = "authenticity_token=#{authenticity_token_value}"
+      method = "method=delete"
+      utf8 = "utf8=✓"
+      href = $(this).attr("href") 
+      if(href.index(/\?/) > -1)
+        href += "&" + [authenticity_token, utf8, method].join("&")
+      end
+      return false;
+
+      $.post(href, {}, function(data){
+        $("#ward_council_representatives").html(data);
+      });
+      return false;
+    });
+    
+    $(".new-model a").click(function(){
+      href = $(this).attr("href");
+      anchor = $(this);
+      $.get(href, function(data){
+        $('#myModal').modal('show');
+        $('#myModal .modal-body').html(data);
+
+        //$(anchor).closest("div").html(data);
+      });
+      return false;
+    });
+
+    $(".btn:contains('Close')").click(function(){
+      $('#myModal').modal('hide');
+    });
+
+    $(".btn:contains('Add record')").click(function(){
+      //authenticity_token = $("meta[name='csrf-token']").attr("content")
+      href = $('#myModal form').attr("action");
+      form_data = $('#myModal form').serialize();
+      $.post(href, form_data, function(data){
+        $('#myModal').modal('hide');
+        $("#ward_council_representatives").html(data);
+      });
+    });
+  });
+</script>
+

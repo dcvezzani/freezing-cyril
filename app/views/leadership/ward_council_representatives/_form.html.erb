@@ -1,4 +1,4 @@
-<%= form_for(@leadership_ward_council_representative) do |f| %>
+<%= form_for(@leadership_ward_council_representative, url: polymorphic_url([@leadership_ward_council_representative], layout: "none") ) do |f| %>
   <% if @leadership_ward_council_representative.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@leadership_ward_council_representative.errors.count, "error") %> prohibited this leadership_ward_council_representative from being saved:</h2>

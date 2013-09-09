@@ -1,4 +1,7 @@
 class Family::ParentsController < AjaxableController
+  def collection_url(model = @model)
+    super(model.new_and_returning_member_progress)
+  end
 end
 
 =begin
