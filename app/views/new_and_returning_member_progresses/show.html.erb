@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<div style="display: none; " id="new_and_returning_member_progress_id"><%= @new_and_returning_member_progress.id %></div>
 <p>
   <b>Ward branch:</b>
   <%= @new_and_returning_member_progress.ward_branch %>
@@ -111,13 +112,47 @@
 
   });
 
+  var new_and_returning_member_progress_id = $("#new_and_returning_member_progress_id").html();
+
   function regChildSection(section){
     //$("#details .well a:contains('New')").click(function(){
     console.log($(section).html());
     var new_record = $(section).find("a:contains('New')");
     $(new_record).click(function(){
-      var href = $(new_record).attr("href") + "?layout=none";
+      var href = $(new_record).attr("href") + "?layout=none&new_and_returning_member_progress_id=" + new_and_returning_member_progress_id;
       getModal(section, href);
+      return false;
+    });
+
+    var show_record = $(section).find("a:contains('Show')");
+    $(show_record).click(function(){
+      var href = $(show_record).attr("href") + "?layout=none";
+      // var href = $(show_record).attr("href") + "?layout=none&new_and_returning_member_progress_id=" + new_and_returning_member_progress_id;
+      getModal(section, href);
+      return false;
+    });
+
+    var edit_record = $(section).find("a:contains('Edit')");
+    $(edit_record).click(function(){
+      var href = $(edit_record).attr("href") + "?layout=none";
+      // var href = $(edit_record).attr("href") + "?layout=none&new_and_returning_member_progress_id=" + new_and_returning_member_progress_id;
+      getModal(section, href);
+      return false;
+    });
+
+    var destroy_record = $(section).find("a:contains('Destroy')");
+    $(destroy_record).click(function(){
+      var record = this;
+      var href = $(destroy_record).attr("href") + "?layout=none";
+      // getModal(section, href);
+      var csrf_token = $("meta[name='csrf-token']").attr("content");
+      var utf8 = "utf8=✓";
+      var method = "_method=DELETE"
+      var data = [csrf_token, utf8, method].join("&");
+      $.post(href, data, function(data){
+        console.log("remove record row");
+        $(record).closest("tr").hide();
+      }, "json");
       return false;
     });
   }
@@ -127,6 +162,10 @@
         showModal();
         var modal_body = $("#myModal").find(".modal-body");
         $(modal_body).html(data);
+
+        var modal_header = $("#myModal").find(".modal-header h3");
+        var header_value = $(section).parent().attr("id");
+        $(modal_header).html(header_value);
         //setTimeout(function(){regChildSection($(section));}, 150);
       });
   }

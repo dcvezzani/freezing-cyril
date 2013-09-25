@@ -2,6 +2,7 @@ class AjaxableController < ApplicationController
   before_filter :check_layout
   before_filter :load_model
   before_filter :load_models, except: [:show, :new, :edit, :create]
+  before_filter :load_new_and_returning_member_progress_id, only: [:new]
 
   # GET /family/parents
   # GET /family/parents.json
@@ -158,4 +159,9 @@ private
     parts[parts.length-1] = parts.last.singularize
     klass = eval(parts.join("::"))
   end
+
+  def load_new_and_returning_member_progress_id
+    @model.new_and_returning_member_progress_id = params[:new_and_returning_member_progress_id]
+  end
+  
 end
