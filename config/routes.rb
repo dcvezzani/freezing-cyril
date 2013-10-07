@@ -31,6 +31,10 @@ Clf004::Application.routes.draw do
     namespace :leadership do resources :visiting_teachers end
     namespace :leadership do resources :home_teachers end
     namespace :leadership do resources :ward_council_representatives end
+
+    member do
+      get 'print_form'
+    end
   end
 
   get "welcome/index"

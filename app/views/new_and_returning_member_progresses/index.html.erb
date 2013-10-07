@@ -10,6 +10,7 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @new_and_returning_member_progresses.each do |new_and_returning_member_progress| %>
@@ -20,6 +21,7 @@
     <td><%= new_and_returning_member_progress.address %></td>
     <td><%= new_and_returning_member_progress.phone_number %></td>
     <td><%= link_to 'Show', new_and_returning_member_progress %></td>
+    <td><%= link_to 'PDF', print_form_new_and_returning_member_progress_path(new_and_returning_member_progress) + ".pdf" %></td>
     <td><%= link_to 'Edit', edit_new_and_returning_member_progress_path(new_and_returning_member_progress) %></td>
     <td><%= link_to 'Destroy', new_and_returning_member_progress, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

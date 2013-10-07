@@ -21,6 +21,15 @@ class NewAndReturningMemberProgressesController < ApplicationController
     end
   end
 
+  def print_form
+    @new_and_returning_member_progress = NewAndReturningMemberProgress.find(params[:id])
+    @record = @new_and_returning_member_progress
+    respond_to do |format|
+      format.pdf { render :layout => false }
+    end
+  end
+
+
   # GET /new_and_returning_member_progresses/new
   # GET /new_and_returning_member_progresses/new.json
   def new
