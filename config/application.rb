@@ -25,6 +25,8 @@ module Clf004
     # config.autoload_paths += %W(#{config.root}/extras)
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %W(#{config.root}/spec/support) if Rails.env.development?
+    config.autoload_paths += %W(#{config.root}/vendor/prawn/lib)
+    config.autoload_paths += %W(#{config.root}/vendor/prawn/manual)
     config.autoload_paths += %W(#{config.root}/app/reports)
 
     # Only load the plugins named here, in the order given (default is alphabetical).

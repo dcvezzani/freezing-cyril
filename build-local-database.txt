@@ -1,4 +1,5 @@
-# log in as super user
+#
+log in as super user
 psql -d postgres -U davidvezzani
 
 # create user and database

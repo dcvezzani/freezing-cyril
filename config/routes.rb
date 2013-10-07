@@ -1,4 +1,13 @@
 Clf004::Application.routes.draw do
+
+  resources :widgets, only: [:index] do
+    collection do
+      get 'test'
+      # get 'test2'
+      get 'test3'
+    end
+  end
+
   namespace :new_and_returning_member_progress do resources :check_list_items end
 
   namespace :new_and_returning_member_progress do resources :check_list_item_labels end

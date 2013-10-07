@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Ward branch</th>
     <th>Stake district</th>
     <th>Address</th>
@@ -13,6 +14,7 @@
 
 <% @new_and_returning_member_progresses.each do |new_and_returning_member_progress| %>
   <tr>
+    <td><%= new_and_returning_member_progress.id %></td>
     <td><%= new_and_returning_member_progress.ward_branch %></td>
     <td><%= new_and_returning_member_progress.stake_district %></td>
     <td><%= new_and_returning_member_progress.address %></td>

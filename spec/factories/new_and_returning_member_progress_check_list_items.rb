@@ -2,8 +2,6 @@
 
 FactoryGirl.define do
   factory :new_and_returning_member_progress_check_list_item, :class => 'NewAndReturningMemberProgress::CheckListItem' do
-    new_and_returning_member_progress_id 1
-    check_list_item_label_id 1
     date_completed { Forgery(:date).date({past: true}) }
   end
 end

@@ -27,21 +27,24 @@ FactoryGirl.define do
         parents_status = %w{d m m b b b b b}.sample
         fathers_name = lambda{Forgery(:name).male_first_name}.call
         mothers_name = lambda{Forgery(:name).female_first_name}.call
+        last_name = lambda{Forgery(:name).last_name}.call
 
         case(parents_status)
         when 'd'
-          report.parents << FactoryGirl.build(:family_parent, name: fathers_name)
+          report.parents << FactoryGirl.build(:family_parent, name: "#{fathers_name} #{last_name}")
         when 'm'
-          report.parents << FactoryGirl.build(:family_parent, name: mothers_name)
+          report.parents << FactoryGirl.build(:family_parent, name: "#{mothers_name} #{last_name}")
         else
-          report.parents << FactoryGirl.build(:family_parent, name: fathers_name)
-          report.parents << FactoryGirl.build(:family_parent, name: mothers_name)
+          report.parents << FactoryGirl.build(:family_parent, name: "#{fathers_name} #{last_name}")
+          report.parents << FactoryGirl.build(:family_parent, name: "#{mothers_name} #{last_name}")
         end
         
         report.ward_council_representatives << FactoryGirl.build_list(:leadership_ward_council_representative, [1,1,2,2,2,2].sample)
         report.home_teachers << FactoryGirl.build_list(:leadership_home_teacher, 2)
         report.visiting_teachers << FactoryGirl.build_list(:leadership_visiting_teacher, 2)
-        report.check_list_items << FactoryGirl.build_list(:new_and_returning_member_progress_check_list_item, 10)
+        (1..12).each{|clilid|
+          report.check_list_items << FactoryGirl.build(:new_and_returning_member_progress_check_list_item, check_list_item_label_id: clilid)
+        }
       end
 
     end
@@ -63,5 +66,9 @@ NewAndReturningMemberProgress.destroy_all
 FactoryGirl.create_list(:new_and_returning_member_progress_with_associations, 15)
 
 NewAndReturningMemberProgress.all.map(&:ward_branch)
+
+
+NewAndReturningMemberProgress.first.check_list_items.map(&:check_list_item_label)
+NewAndReturningMemberProgress.first.check_list_items.map{|x| x.check_list_item_label.name }
 =end
 
